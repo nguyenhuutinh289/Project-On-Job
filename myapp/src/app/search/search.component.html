@@ -1,0 +1,109 @@
+<!-- <a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Trigger modal</a> -->
+<div class="modal fade my-modal" id="modal-id">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Detail</h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <img src="./../../assets/images/img/4.jpg" alt=""> -->
+<!--  -->
+<div class="my-bg">
+  <div class="container">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th></th>
+          <th>Author</th>
+          <th>Subject</th>
+          <th>TableOfContent</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let book of arr; let idx = index">
+          
+            <tr>
+              <td class="my-td">
+                <div>
+                  <img class="my-img" src="./../../assets/images/img/{{idx + 1}}.jpg" alt="">
+                  <!-- <p>{{title.name}}</p> -->
+                </div>
+              </td>
+              <td>
+                <div>
+                  <div>
+                    <label for="">Barcode :
+                      <span>{{book.barcode}}</span>
+                    </label>
+                  </div>
+                  <div>
+                    <label for="">Type :
+                      <span>{{book.type ? 'CopyRight' : 'Copy'}}</span>
+                    </label>
+                  </div>
+                  <div>
+                    <label for="">Pages :
+                      <span>{{book.page}}</span>
+                    </label>
+                  </div>
+                  <div>
+                    <label for="">Status :
+                      <span>{{book.status ? 'In Stock' : 'Out Of Stock' }}</span>
+                    </label>
+                  </div>
+                </div>
+              </td>
+              <!-- end -->
+              <!-- <ng-container *ngFor="let tit of book.titid"> -->
+                <td>
+                  <div *ngFor="let tit of book.titid">
+                    <div *ngFor="let au of tit.authors">
+                      <div>{{au.au}}</div>
+                    </div>
+                  </div>
+                </td>
+                <!-- end -->
+                <td>
+                  <div *ngFor="let tit of book.titid">
+                    <div *ngFor="let cat of tit.categories">
+                        <div> {{cat.category}}</div>
+                    </div>
+                  </div>
+                </td>
+              <!-- end -->
+              <td>
+                  <div *ngFor="let tit of book.titid">
+                      <div> {{tit.content}}</div>
+                  </div>
+              </td>
+              <td>
+                <a href='#modal-id' class="btn btn-success" data-toggle="modal" href='#modal-id'>Detail</a>
+              </td>
+            </tr>
+          <!-- </ng-container> -->
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <!-- end container -->
+</div>
+
+<div *ngFor=" let i of arr">
+  {{i.id}} {{i.titid[1].name}}
+  <!-- <div *ngFor = "let tit of i.titid">
+    {{tit.name}}  {{tit.content}}
+  </div> -->
+</div>

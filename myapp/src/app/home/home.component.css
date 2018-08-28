@@ -1,0 +1,8 @@
+.my-carousel {
+    background-color: #f6f6f6;
+    padding-top: 30px;
+}
+.carousel-height{
+    width: 100%;
+    height:  400px !important;
+}
